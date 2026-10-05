@@ -1,0 +1,33 @@
+<% content_for :title, "記事管理 | elilog" %>
+<% content_for :description, "elilogの記事管理画面です。" %>
+
+<section>
+  <div class="flex items-center justify-between gap-4">
+    <div>
+      <p class="text-sm font-medium tracking-wide text-stone-500">ADMIN</p>
+      <h1 class="mt-2 text-3xl font-bold tracking-tight">記事管理</h1>
+    </div>
+    <%= link_to "新しい記事", new_admin_post_path, class: "rounded-md bg-stone-900 px-4 py-2 text-sm font-medium text-white hover:bg-stone-700" %>
+  </div>
+
+  <% if @posts.any? %>
+    <ol class="mt-8 divide-y divide-stone-200 border-y border-stone-200">
+      <% @posts.each do |post| %>
+        <li class="flex items-center justify-between gap-4 py-5">
+          <div>
+            <time datetime="<%= post.published_on.iso8601 %>" class="text-sm text-stone-500"><%= l(post.published_on, format: :long) %></time>
+            <h2 class="mt-1 text-lg font-semibold"><%= post.title %></h2>
+          </div>
+          <div class="flex shrink-0 items-center gap-3 text-sm">
+            <%= link_to "編集", edit_admin_post_path(post), class: "underline underline-offset-4" %>
+            <%= button_to "削除", admin_post_path(post), method: :delete, class: "text-red-700 underline underline-offset-4", form: { data: { turbo_confirm: "「#{post.title}」を削除します。元に戻せません。" } } %>
+          </div>
+        </li>
+      <% end %>
+    </ol>
+  <% else %>
+    <p class="mt-8 text-stone-600">記事はまだありません。</p>
+  <% end %>
+
+  <%= button_to "ログアウト", admin_logout_path, method: :delete, class: "mt-8 text-sm text-stone-600 underline underline-offset-4" %>
+</section>

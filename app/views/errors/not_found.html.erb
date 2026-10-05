@@ -1,0 +1,9 @@
+<% content_for :title, "ページが見つかりません | elilog" %>
+<% content_for :description, "お探しのページは見つかりませんでした。" %>
+
+<section>
+  <p class="text-sm font-medium tracking-wide text-stone-500">404</p>
+  <h1 class="mt-3 text-3xl font-bold tracking-tight">ページが見つかりません</h1>
+  <p class="mt-5 leading-8 text-stone-600">URLが正しいか確認するか、記事一覧からお探しください。</p>
+  <%= link_to "記事一覧へ戻る", root_path, class: "mt-8 inline-block text-sm text-stone-700 underline decoration-stone-300 underline-offset-4 hover:text-stone-950" %>
+</section>

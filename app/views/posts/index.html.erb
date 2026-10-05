@@ -1,0 +1,26 @@
+<% content_for :title, "elilog | 技術記事・学習記録・日記" %>
+<% content_for :description, "技術記事、学習記録、日記を新しい順に掲載する個人ブログです。" %>
+
+<section aria-labelledby="page-title">
+  <p class="mb-3 text-sm font-medium tracking-wide text-stone-500">PERSONAL BLOG</p>
+  <h1 id="page-title" class="text-3xl font-bold tracking-tight sm:text-4xl">読む、学ぶ、記す。</h1>
+  <p class="mt-4 max-w-2xl leading-8 text-stone-600">技術記事、学習記録、日々の気づきを残す場所です。</p>
+</section>
+
+<section class="mt-12" aria-labelledby="posts-heading">
+  <h2 id="posts-heading" class="text-lg font-semibold">記事</h2>
+  <% if @posts.any? %>
+    <ol class="mt-5 divide-y divide-stone-200 border-y border-stone-200">
+      <% @posts.each do |post| %>
+        <li>
+          <%= link_to post_path(post), class: "block py-6 transition hover:bg-stone-100" do %>
+            <time datetime="<%= post.published_on.iso8601 %>" class="text-sm text-stone-500"><%= l(post.published_on, format: :long) %></time>
+            <h3 class="mt-2 text-xl font-semibold leading-snug"><%= post.title %></h3>
+          <% end %>
+        </li>
+      <% end %>
+    </ol>
+  <% else %>
+    <p class="mt-5 text-stone-600">記事はまだありません。</p>
+  <% end %>
+</section>

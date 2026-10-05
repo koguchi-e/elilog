@@ -1,0 +1,11 @@
+<% content_for :title, "#{@post.title} | elilog" %>
+<% content_for :description, post_description(@post) %>
+
+<article>
+  <%= link_to "← 記事一覧へ", root_path, class: "text-sm text-stone-600 underline decoration-stone-300 underline-offset-4 hover:text-stone-950" %>
+  <header class="mt-10 border-b border-stone-200 pb-8">
+    <time datetime="<%= @post.published_on.iso8601 %>" class="text-sm text-stone-500"><%= l(@post.published_on, format: :long) %></time>
+    <h1 class="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl"><%= @post.title %></h1>
+  </header>
+  <div class="mt-8 whitespace-pre-wrap text-[1.05rem] leading-8 text-stone-800"><%= @post.body %></div>
+</article>
