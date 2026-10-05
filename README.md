@@ -12,6 +12,12 @@ Homebrewを使うmacOS環境では、PostgreSQL 14は次で起動できます。
 brew services start postgresql@14
 ```
 
+管理画面を使うために、起動前に管理用パスワードを設定します。管理画面は `http://localhost:3000/admin/login` です。
+
+```sh
+export ADMIN_PASSWORD='推測されにくい長いパスワード'
+```
+
 ```sh
 bin/setup
 bin/rails db:prepare

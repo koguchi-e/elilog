@@ -1,0 +1,8 @@
+<% content_for :title, "新しい記事 | elilog" %>
+<% content_for :description, "elilogで新しい記事を書く画面です。" %>
+
+<section>
+  <p class="text-sm font-medium tracking-wide text-stone-500">ADMIN</p>
+  <h1 class="mt-2 text-3xl font-bold tracking-tight">新しい記事</h1>
+  <%= render "form", post: @post %>
+</section>
